@@ -27,32 +27,84 @@
 
 \section{Introduction}
 
-The way in which we use Procedural Content Generators (PCG) to develop content for games is a vital part of the video game design process. With the recent release of popular procedurally generated games, such as Minecraft, Elite: Dangerous and The Binding of Isaac, it is important to choose a procedural content generator that suits your needs, as there are a lot of implementations of PCG to choose from. The work is motivated by the complexity and variety of all the different approaches to Procedural Content Generation, and aims to provide a comparison of three different papers to make a recommendation for an Indie developer that would like to implement a PCG into their 2-D platformer.
+The way in which we use Procedural Content Generators (PCG) to develop content for games is a vital part of the video game design process. With the recent release of popular procedurally generated games, such as Minecraft, Elite: Dangerous and The Binding of Isaac, it is important to choose a procedural content generator that suits your needs, as there are a lot of different implementations of PCG to choose from, each designed for a particular enviroment. The work is motivated by the complexity and variety of all the different approaches to Procedural Content Generation, and aims to provide a comparison of three different papers to make a recommendation based on qualities that would suit the needs for an Indie developer that would like to implement a PCG into their 2-D platformer game.
 
-There is always going to be advantages and disadvantages of one PCG over another depending on the context. The three papers that this essay will be reviewing are:
+There is always going to be advantages and disadvantages of one PCG over another depending on the context. However for the context of a 2-D platformer, these are three PCG articles that are designed to generate levels in the style of Super Mario Bros(SMB).
 
-\textbf{A Rhythm-Based Level Generator for 2-D platformers}\cite{smith2009}, which is designed modularly into groups called ``rhythm groups'' which are then pieced together to form a complete level. The objective of this PCG is to ensure every level it generates is playable and each level requires very little hand-authoring, all the designer has to do is modify the parameters. 
+The First Paper is:
+
+\textbf{Launchpad: A Rhythm-Based Level Generator for 2-D platformers}\cite{smith2009}, which is designed modularly into groups called ``rhythm groups'' which contain a set of challenges for the player, which are then pieced together to form a complete level. The objective of this PCG is to ensure every level it generates is playable and each level requires very little hand-authoring, all the designer has to do is modify the parameters in the PCG settings.
 
 The next paper is:
 
-\textbf{Procedural Level Generation Using Occupancy-Regulated Extension} \cite{mawhorter2010}, which is a more general purpose algorithm that can be applied to other types of games. However this aproach prefers variety over playability
+\textbf{Procedural Level Generation Using Occupancy-Regulated Extension} \cite{mawhorter2010}, which is a more general purpose algorithm that can be applied to other types of games. However this aproach prefers variety over playability, so not all the levels it generates will be playable, but can be very complex.
 
 The last paper is:
 
-\textbf{Procedural Content Generation Using Patterns as Objectives}\cite{dahlskog2014}
-
-
-
-
-
-
+\textbf{Procedural Content Generation Using Patterns as Objectives}\cite{dahlskog2014} They take an interesting approach to PCG, by looking at the way levels are structed in an original game such as SMB, then analysing that level design to generate levels that use the same design techniques.
 
 
 %Write your introduction here. A brief introduction is recommended, which should outline key details of the chosen topic and the reviewed papers, motivate the work, and provide a roadmap of key points to the reader. The motivation is quite important here, as essays should have a contribution (i.e., what is the point of the essay, and what does the reader take away from the essay) and the link between the motivation (in the introduction) and the contribution (in the conclusion) should be made clear.
 
-\section{Your section title here}
+\section{Review of the Articles}
 
-Write the main body of your essay here. Add more sections if appropriate. You may choose to write about each of your three papers in its own section, or you may choose a different structure. Either way, remember that you are being assessed on technical insight and analysis: it is not enough to merely summarise the contents of the three papers. You must demonstrate the ability to make inferences beyond what is written in the papers, and to draw the three papers together into a single coherent narrative.
+There are many different approaches to implementing PCG in games, the reason I chose these three articles is because they were specified towards 2-D platformers. In particular, they were all loosely based of SMB, and generate content in that same style. 
+
+The recommendation at the end of this paper will be based off the desirable characteristics in each algorithm, such as \textit{expressive range} proposed by Smith and Whitehead\cite{smith2010}. Expressive range contains a set of metrics such as \textit{leniency} and \textit{Linearity} which are appropriate for analyzing the difficulty and height variance of platform levels.
+
+\subsection{Launchpad: A Rhythm-Based Level Generator}
+
+Launchpad generates levels out of small segments called ``\textit{rhythm groups}''  which are short, non-overlapping areas that contain a challenge for the player. These challenges can be things such as a series of quick jumps or jumping back and forth between platforms, the rhythm groups are generated using a 2 tiered grammar \footnote{Grammar in this context meaning a set of rules for rewriting strings, which forms the basics of how procedural content generation works\cite{shaker2015}.} based approach.
+
+The first stage of this creates a set of beats that correspond to a player action, this is good because it means the game can be improved modularly by adding more player actions.
+The second stage takes the player action and creates geometry based on parameters, this is then added to the level as a ``rhythm group''. 
+
+To achieve guaranteed playability of levels, Launchpad generates many different levels which are then tested against their leniency and linearity. This design works well because it lets the program be very modular, and each stage has its own setting that can be edited to make the program look how the designer intended.
+
+However this approach is designed for a ``speedrun''  type of gameplay, and does not currently work well with exploration type of gameplay.
+
+
+\subsection{Procedural Level Generation Using Occupancy-Regulated Extension}
+
+This procedural level generator is to be able to generate levels without knowing anything about how the game works. This works by using a library of chunks and assembling them based on a complex set of parameters. 
+
+This Algorithm generates the content in 3 stages, firstly it selects the location at which to start generating geometry. It then selects chunks from the library that is then tested with its filtering and selection algorithms to see if it is appropriate to place at that location. Lastly that chunk is integrated within the existing content.
+
+The only aspect that is not general purpose is the post-processing algorithm which is very specific to the game, because it adds textures to the sides of blocks and changes the amount of power-up boxes and coins on the level.
+
+It is not very quick at generating levels with large chunk- library's
+
+Relies on a large chunk library to work well. 
+
+Requires a lot of post-processing
+
+Does not guarantee playable levels.
+
+
+
+\subsection{Procedural Content Generation Using Patterns as Objectives}
+
+This method works by identifying ``micro-patterns'' and ``meso-patterns'' in an existing game, such as SMB. Micro-patterns are a vertical 1-block wide slice of the level, and meso-patterns are they way in which micro-patterns are arranged. The generator then uses the micro-patterns as building blocks to generate a new level.
+
+This compares to the ORE method by 
+
+
+
+\subtitle{comparisons}
+
+Flexibility
+
+Amount of human authoring needed for content/levels
+
+Leniency
+
+Linearity
+
+
+
+
+
+%Write the main body of your essay here. Add more sections if appropriate. You may choose to write about each of your three papers in its own section, or you may choose a different structure. Either way, remember that you are being assessed on technical insight and analysis: it is not enough to merely summarise the contents of the three papers. You must demonstrate the ability to make inferences beyond what is written in the papers, and to draw the three papers together into a single coherent narrative.
 
 \section{Recommendation}
 
