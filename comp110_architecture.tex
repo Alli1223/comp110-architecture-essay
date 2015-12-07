@@ -15,7 +15,7 @@
 
 
 % Please include a clear, concise, and descriptive title
-\title{A Comparison of which Procedural Content Generator Provides More Variety and Reliability for an Indie Development Team}
+\title{A Comparison of Procedural Content Generators and Which Provides More Variety and Extensibility for an Indie Development Team} 
 
 % Please do not change the subtitle
 \subtitle{COMP110 - Computer Architecture Essay}
@@ -26,11 +26,6 @@
 \begin{document}
 
 \maketitle
-
-\begin{center}
-\textbf{WIP - recommendation and conclusion not finished}
-
-\end{center}
 
 
 \abstract{This paper will evaluate and compare three articles; A Rhythm-Based Level Generator for 2-D platformers \cite{smith2009}, Procedural Content Generation Using Occupancy-Regulated Extension \cite{mawhorter2010} and Procedural Content Generation Using Patterns as Objectives \cite{dahlskog2014}. These articles all have their own techniques to procedurally generate content for a 2-D platformer. This article recommends that Launchpad: A Rhythm-Based Level Generator is the most appropriate Procedural Content Generator (PCG) for an indie developer that would like to implement a 2-D platformer, based on variety and extensibility. These are important metrics because variety allows for more re-playability and extensibility allows the game to grow without a lot of performance issues.}
@@ -51,7 +46,7 @@ Procedural Level Generation Using Occupancy-Regulated Extension \cite{mawhorter2
 
 Procedural Content Generation Using Patterns as Objectives \cite{dahlskog2014} \par
 
-Variety can be measured by \textit{Linearity} and \textit{leniency} \footnote{leniency is how forgiving the level is to the player, e.g. levels with less obstacles or enemy's are more lenient. Linearity is a measure of the varying geometry of a level} which are metrics proposed by Smith and Whitehead \cite{smith2010}. Extensibility is being measured by how much control the developer has over the PCG and how the addition of content added to the game will affect the performance of the PCG.
+Variety is being measured by \textit{Linearity} and \textit{leniency} \footnote{leniency is how forgiving the level is to the player, e.g. levels with less obstacles or enemy's are more lenient. Linearity is a measure of the varying geometry of a level} which are metrics proposed by Smith and Whitehead \cite{smith2010}. Extensibility is being measured by how much control the developer has over the PCG and how the addition of content added to the game will affect the performance of the PCG.
 
 
 \section{Review of Procedural Content Generation Articles}
@@ -63,7 +58,7 @@ Launchpad generates levels out of small segments called ``\textit{rhythm groups}
 The first stage of this creates a set of beats that correspond to a player action. This works well because it means the game can be improved by the addition of varying player actions. Furthermore each beat can be very different from the last beat, allowing for a lot of variety.
 The second stage takes the player action and creates geometry based on its parameters, this is then added to the level as a ``rhythm group''. 
 
-To achieve guaranteed playability of levels, Launchpad takes into account a set of parameters that determine how the player moves, e.g. The maximum speed the player can move, how high they can jump etc \cite{smith2012web}. This means that each level that is generated does not create sections that the player cannot pass. Furthermore designers can have a lot more control over the design of player movement without having to be concerned with level geometry, thus also increasing the extensibility of the PCG.
+To achieve guaranteed playability of levels, Launchpad takes into account a set of parameters that determine how the player moves, e.g. the maximum speed the player can move, how high they can jump etc \cite{smith2012web}. This means that each level that is generated does not create sections which the player cannot pass. Furthermore designers are able to have a lot more control over the design of player movement without having to be concerned with level geometry, thus increasing the extensibility of the PCG.
 
 
 \subsection{Procedural Level Generation Using Occupancy-Regulated Extension}
@@ -74,12 +69,12 @@ This algorithm generates the content in 3 stages, firstly it selects the locatio
 
 Compared to Launchpad, this method requires a large amount of human authored content to be available in order to get a varied level. Furthermore, this method is not very extensible as the more items are added to the library the longer it takes to generate a level. Even after the level is generated, it still requires a large amount of post-processing to make the game playable.\cite{mawhorter2010}
 
-However when done correctly with the right settings, this approach can generate some very creative and complex levels as seen in figure [\ref{fig:PCG}] and [\ref{fig:ocupancyfig2}] . This is especially useful when creating exploration games.
+However when done correctly with the right settings, this approach can generate some very creative and complex levels as seen in figure \ref{fig:PCG} and \ref{fig:ocupancyfig2} . This is especially useful when creating exploration games.
 
 \begin{figure}[t]
 \includegraphics[width=8cm]{occupancy-complex}
 \centering
-    \caption{This shows some of the complex levels that the occupancy-regulated extension method can create. (images from \cite{mawhorter2010})}
+    \caption{This shows some of the complex levels that the occupancy-regulated extension method can create. (image from \cite{mawhorter2010})}
     \label{fig:ocupancyfig2}
 \end{figure}
 
@@ -111,7 +106,7 @@ This method works by identifying ``micro-patterns'' and ``meso-patterns'' in an 
 
 Figure \ref{fig:PCG} shows a set of images displaying the different outputs of each PCG.
 
-Dahlskog and Togelius provide a good balance between variability and control. However this too has no method of guaranteeing playability when generating a level \cite[p.4]{dahlskog2014}, and also requires a large chunk library in order to work. Furthermore increasing this chunk library will lead to slight performance issues
+Dahlskog and Togelius provide a good balance between variability and control. However this too has no method of guaranteeing playability when generating a level \cite[p.4]{dahlskog2014}, and also requires a large chunk library in order to work. Furthermore increasing this chunk library will lead to slight performance issues.
 
 Mawhorter and Mateas' ORE produces levels with a lot of variety, which would be appropriate for a exploration style game where getting stuck isn't an issue. However for the context of this paper, that is an undesirable property.
 
@@ -119,11 +114,9 @@ Smith et al. provides the most appropriate solution for this paper, as Launchpad
 
 
 
-%Your essay must make a clear recommendation, in terms of which of the three techniques you have reviewed is the best according to whichever metric or metrics you feel is most appropriate. You must justify your choice, backing it up with empirical evidence. However remember that an academic essay is not a murder mystery: you should already have briefly discussed your recommendation in the introduction and in other parts of the essay. Do not save it for a grand reveal at the end.
-
 \section{Conclusion}
 
-Overall Launchpad provides a fast PCG that will allow for the indie developers to create games with minimal effort, while allowing for a large ammount of control over the linearity and leniency of the content is generated. The speed at which it generates levels means it can run within the game engine at runtime 
+Overall Launchpad provides a fast PCG that will allow for the indie developers to create levels with minimal effort, while allowing for a large ammount of control over the linearity and leniency of the content that is generated. Also the speed at which it generates levels means it can run within the game engine at runtime.
 
 
 However for other contexts this recommendation may change.
